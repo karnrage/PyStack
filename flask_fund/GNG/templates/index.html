@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>GrNuGa</title>
+        <link rel="stylesheet" type="text/css" href="skeleton.css">
+     
+    </head>
+    <body>
+        <h1>Welcome to the Great Number Game!!!</h1>
+        <h2>I am thinking of a number between 1 and 100</h2>
+        <h3>Take a guess</h3>
+
+        {{session['answer']}}
+                  
+        <form action='/process' method='post'>
+            Guess: <input type='text' name='guess'>                              
+            <input type='submit' value='SUBMIT'><button>SUB?mit</button>
+        </form>                  
+           
+    </body>
+</html>
+
+
