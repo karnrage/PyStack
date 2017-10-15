@@ -18,6 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [    
    #url(r'^$', include('apps.jango.urls')),    why doesn't this work?
+    url(r'^', include('apps.time_display.urls')),
     url(r'^', include('apps.jango.urls')),
     url(r'^admin/', admin.site.urls),
     
