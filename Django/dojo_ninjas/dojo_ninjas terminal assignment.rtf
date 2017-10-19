@@ -1,0 +1,315 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 6.3.9600}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 dojos.objects.create(name="CodingDojo dtroit",city="detroit",state= "mi")\par
+\par
+ninjas.objects.create(first_name="tallen",last_name="snickersz")\par
+\par
+from apps.dojoninjas.models import *\par
+\par
+dojos.objects.ninjas.all()\par
+\par
+\par
+________________________Start below______________________\par
+\par
+<ninjas: ninjas object>\par
+>>> foreignDojo = dojos.objects.get(name="CodingDojo Seattle")\par
+Traceback (most recent call last):\par
+  File "<console>", line 1, in <module>\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+db\\models\\manager.py", line 85, in manager_method\par
+    return getattr(self.get_queryset(), name)(*args, **kwargs)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+db\\models\\query.py", line 380, in get\par
+    self.model._meta.object_name\par
+DoesNotExist: dojos matching query does not exist.\par
+>>> foreignDojo = dojos.objects.get(name="CodingDojo seattle")\par
+Traceback (most recent call last):\par
+  File "<console>", line 1, in <module>\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+db\\models\\manager.py", line 85, in manager_method\par
+    return getattr(self.get_queryset(), name)(*args, **kwargs)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+db\\models\\query.py", line 380, in get\par
+    self.model._meta.object_name\par
+DoesNotExist: dojos matching query does not exist.\par
+>>> dojos.objects.all()\par
+<QuerySet [<dojos: dojos object>, <dojos: dojos object>, <dojos: dojos object>,\par
+<dojos: dojos object>, <dojos: dojos object>, <dojos: dojos object>]>\par
+>>>\par
+Traceback (most recent call last):\par
+  File "manage.py", line 22, in <module>\par
+    execute_from_command_line(sys.argv)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+core\\management\\__init__.py", line 364, in execute_from_command_line\par
+    utility.execute()\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+core\\management\\__init__.py", line 356, in execute\par
+    self.fetch_command(subcommand).run_from_argv(self.argv)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+core\\management\\base.py", line 283, in run_from_argv\par
+    self.execute(*args, **cmd_options)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+core\\management\\base.py", line 342, in execute\par
+    translation.activate(saved_locale)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+utils\\translation\\__init__.py", line 166, in activate\par
+    return _trans.activate(language)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+utils\\translation\\__init__.py", line 57, in __getattr__\par
+    def __getattr__(self, real_name):\par
+KeyboardInterrupt\par
+\par
+(djangoenv) C:\\Users\\kkps\\Desktop\\CDojo\\pyStack\\Django\\dojo_ninjas>python manage\par
+.py makemigrations\par
+No changes detected\par
+\par
+(djangoenv) C:\\Users\\kkps\\Desktop\\CDojo\\pyStack\\Django\\dojo_ninjas>python manage\par
+.py migrate\par
+Operations to perform:\par
+  Apply all migrations: admin, auth, contenttypes, dojoninjas, dojonninjas, sess\par
+ions\par
+Running migrations:\par
+  No migrations to apply.\par
+\par
+(djangoenv) C:\\Users\\kkps\\Desktop\\CDojo\\pyStack\\Django\\dojo_ninjas>python manage\par
+.py shell\par
+Python 2.7.9 |CUSTOM| (default, Jul  1 2015, 03:41:50) [MSC v.1500 64 bit (AMD64\par
+)] on win32\par
+Type "help", "copyright", "credits" or "license" for more information.\par
+(InteractiveConsole)\par
+>>> from apps.dojoninjas.models import *\par
+>>> dojos.objects.all()\par
+<QuerySet [<dojos: dojos object>, <dojos: dojos object>, <dojos: dojos object>,\par
+<dojos: dojos object>, <dojos: dojos object>, <dojos: dojos object>]>\par
+>>>\par
+Traceback (most recent call last):\par
+  File "manage.py", line 22, in <module>\par
+    execute_from_command_line(sys.argv)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+core\\management\\__init__.py", line 364, in execute_from_command_line\par
+    utility.execute()\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+core\\management\\__init__.py", line 356, in execute\par
+    self.fetch_command(subcommand).run_from_argv(self.argv)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+core\\management\\base.py", line 283, in run_from_argv\par
+    self.execute(*args, **cmd_options)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+core\\management\\base.py", line 342, in execute\par
+    translation.activate(saved_locale)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+utils\\translation\\__init__.py", line 166, in activate\par
+    return _trans.activate(language)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+utils\\translation\\__init__.py", line 58, in __getattr__\par
+    from django.conf import settings\par
+KeyboardInterrupt\par
+\par
+(djangoenv) C:\\Users\\kkps\\Desktop\\CDojo\\pyStack\\Django\\dojo_ninjas>manage.py she\par
+ll\par
+\par
+(djangoenv) C:\\Users\\kkps\\Desktop\\CDojo\\pyStack\\Django\\dojo_ninjas>\par
+python manage.py makemigrations\par
+No changes detected\par
+\par
+(djangoenv) C:\\Users\\kkps\\Desktop\\CDojo\\pyStack\\Django\\dojo_ninjas>python manage\par
+.py migrate\par
+Operations to perform:\par
+  Apply all migrations: admin, auth, contenttypes, dojoninjas, dojonninjas, sess\par
+ions\par
+Running migrations:\par
+  No migrations to apply.\par
+\par
+(djangoenv) C:\\Users\\kkps\\Desktop\\CDojo\\pyStack\\Django\\dojo_ninjas>from apps.doj\par
+oninjas.models import *\par
+'from' is not recognized as an internal or external command,\par
+operable program or batch file.\par
+\par
+(djangoenv) C:\\Users\\kkps\\Desktop\\CDojo\\pyStack\\Django\\dojo_ninjas>from apps.doj\par
+oninjas.models import *\par
+'from' is not recognized as an internal or external command,\par
+operable program or batch file.\par
+\par
+(djangoenv) C:\\Users\\kkps\\Desktop\\CDojo\\pyStack\\Django\\dojo_ninjas>python mange.\par
+py shell\par
+python: can't open file 'mange.py': [Errno 2] No such file or directory\par
+\par
+(djangoenv) C:\\Users\\kkps\\Desktop\\CDojo\\pyStack\\Django\\dojo_ninjas>python manage\par
+.py shell\par
+Python 2.7.9 |CUSTOM| (default, Jul  1 2015, 03:41:50) [MSC v.1500 64 bit (AMD64\par
+)] on win32\par
+Type "help", "copyright", "credits" or "license" for more information.\par
+(InteractiveConsole)\par
+>>> from apps.dojoninjas.models import *\par
+>>> dojos.objects.all()\par
+<QuerySet [<Blog object: CodingDojo Silicon Valley Mountain View>, <Blog object:\par
+ CodingDojo Seatlle Seattle>, <Blog object: CodingDojo New York New York>, <Blog\par
+ object: CodingDojo milwaukee milwaukee>, <Blog object: CodingDojo madision madi\par
+son>, <Blog object: CodingDojo dtroit detroit>]>\par
+>>> foreignDojo = dojos.objects.get(name="CodingDojo Seatlle")\par
+>>> ninjas.objects.create(first_name="lawo", last_name="lesHo", dojos = foreignD\par
+ojo)\par
+<Blog object: lawo dojos object>\par
+>>> ninjas.objects.create(first_name="lawerso", last_name="leslie", dojos = fore\par
+ignDojo)\par
+<Blog object: lawerso dojos object>\par
+>>> ninjas.objects.create(first_name="patrick", last_name="whatever", dojos = fo\par
+reignDojo)\par
+<Blog object: patrick dojos object>\par
+>>> foreignDojo = dojos.objects.get(name="CodingDojo milwaukee")\par
+>>> ninjas.objects.create(first_name="mike", last_name="jordan", dojos = foreign\par
+Dojo)\par
+<Blog object: mike dojos object>\par
+>>> ninjas.objects.create(first_name="kam", last_name="man", dojos = foreignDojo\par
+)\par
+<Blog object: kam dojos object>\par
+>>> ninjas.objects.create(first_name="lacey", last_name="richer", dojos = foreig\par
+nDojo)\par
+<Blog object: lacey dojos object>\par
+>>> dojos.ninjas.objects.all()\par
+Traceback (most recent call last):\par
+  File "<console>", line 1, in <module>\par
+AttributeError: 'ReverseManyToOneDescriptor' object has no attribute 'objects'\par
+>>> dojos.objects.ninjas.all()\par
+Traceback (most recent call last):\par
+  File "<console>", line 1, in <module>\par
+AttributeError: 'Manager' object has no attribute 'ninjas'\par
+>>> ninjas.objects,all()\par
+Traceback (most recent call last):\par
+  File "<console>", line 1, in <module>\par
+TypeError: all() takes exactly one argument (0 given)\par
+>>> ninjas.objects.all()\par
+<QuerySet [<Blog object: jonny None>, <Blog object: aaarron None>, <Blog object:\par
+ tallen None>, <Blog object: Thao dojos object>, <Blog object: larr dojos object\par
+>, <Blog object: chicken dojos object>, <Blog object: lawo dojos object>, <Blog\par
+object: lawerso dojos object>, <Blog object: patrick dojos object>, <Blog object\par
+: mike dojos object>, <Blog object: kam dojos object>, <Blog object: lacey dojos\par
+ object>]>\par
+>>> ninjas.objects.filter(dojos=1)\par
+<QuerySet []>\par
+>>> ninjas.objects.filter(id.dojos=1)\par
+  File "<console>", line 1\par
+SyntaxError: keyword can't be an expression\par
+>>> ninjas.objects.filter(id_dojos=1)\par
+Traceback (most recent call last):\par
+  File "<console>", line 1, in <module>\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+db\\models\\manager.py", line 85, in manager_method\par
+    return getattr(self.get_queryset(), name)(*args, **kwargs)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+db\\models\\query.py", line 784, in filter\par
+    return self._filter_or_exclude(False, *args, **kwargs)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+db\\models\\query.py", line 802, in _filter_or_exclude\par
+    clone.query.add_q(Q(*args, **kwargs))\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+db\\models\\sql\\query.py", line 1250, in add_q\par
+    clause, _ = self._add_q(q_object, self.used_aliases)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+db\\models\\sql\\query.py", line 1276, in _add_q\par
+    allow_joins=allow_joins, split_subq=split_subq,\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+db\\models\\sql\\query.py", line 1154, in build_filter\par
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+db\\models\\sql\\query.py", line 1034, in solve_lookup_type\par
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_met\par
+a())\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+db\\models\\sql\\query.py", line 1352, in names_to_path\par
+    "Choices are: %s" % (name, ", ".join(available)))\par
+FieldError: Cannot resolve keyword 'id_dojos' into field. Choices are: created_a\par
+t, dojos, dojos_id, first_name, id, last_name, updated_at\par
+>>> dojos.objects.filter(id=1)\par
+<QuerySet [<Blog object: CodingDojo Silicon Valley Mountain View>]>\par
+>>> dojos.objects.filter(id=2)\par
+<QuerySet [<Blog object: CodingDojo Seatlle Seattle>]>\par
+>>> dojos.objects.filter(id=3)\par
+<QuerySet [<Blog object: CodingDojo New York New York>]>\par
+>>> dojo.objects.first()\par
+Traceback (most recent call last):\par
+  File "<console>", line 1, in <module>\par
+NameError: name 'dojo' is not defined\par
+>>> dojos.objects.first()\par
+<Blog object: CodingDojo Silicon Valley Mountain View>\par
+>>> dojo.objects.first().ninjas.all()\par
+Traceback (most recent call last):\par
+  File "<console>", line 1, in <module>\par
+NameError: name 'dojo' is not defined\par
+>>> dojos.objects.first().ninjas.all()\par
+<QuerySet []>\par
+>>> ninjas.objects.create(first_name="lacey", last_name="richer", dojos = dojo.o\par
+bjects.first())\par
+Traceback (most recent call last):\par
+  File "<console>", line 1, in <module>\par
+NameError: name 'dojo' is not defined\par
+>>> ninjas.objects.create(first_name="lacey", last_name="richer", dojos = dojos.\par
+objects.first())\par
+<Blog object: lacey dojos object>\par
+>>> dojos.objects.first().ninjas.all()\par
+<QuerySet [<Blog object: lacey dojos object>]>\par
+>>> dojos.objects.get(id=2).ninjas.all()\par
+<QuerySet [<Blog object: lawo dojos object>, <Blog object: lawerso dojos object>\par
+, <Blog object: patrick dojos object>]>\par
+>>> dojos.objects.get(id=3).ninjas.all()\par
+<QuerySet [<Blog object: Thao dojos object>, <Blog object: larr dojos object>, <\par
+Blog object: chicken dojos object>]>\par
+>>> dojos.objects.last().ninjas.all()\par
+<QuerySet []>\par
+>>>\par
+Traceback (most recent call last):\par
+  File "manage.py", line 22, in <module>\par
+    execute_from_command_line(sys.argv)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+core\\management\\__init__.py", line 364, in execute_from_command_line\par
+    utility.execute()\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+core\\management\\__init__.py", line 356, in execute\par
+    self.fetch_command(subcommand).run_from_argv(self.argv)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+core\\management\\base.py", line 283, in run_from_argv\par
+    self.execute(*args, **cmd_options)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+core\\management\\base.py", line 342, in execute\par
+    translation.activate(saved_locale)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+utils\\translation\\__init__.py", line 166, in activate\par
+    return _trans.activate(language)\par
+  File "C:\\Users\\kkps\\Desktop\\CDojo\\myEnviro\\djangoenv\\lib\\site-packages\\django\\\par
+utils\\translation\\trans_real.py", line 239, in activate\par
+    _active.value = translation(language)\par
+KeyboardInterrupt\par
+\par
+(djangoenv) C:\\Users\\kkps\\Desktop\\CDojo\\pyStack\\Django\\dojo_ninjas>python manage\par
+.py makemigrations\par
+You are trying to add a non-nullable field 'desc' to dojos without a default; we\par
+ can't do that (the database needs something to populate existing rows).\par
+Please select a fix:\par
+ 1) Provide a one-off default now (will be set on all existing rows with a null\par
+value for this column)\par
+ 2) Quit, and let me add a default in models.py\par
+Select an option: 2\par
+\par
+(djangoenv) C:\\Users\\kkps\\Desktop\\CDojo\\pyStack\\Django\\dojo_ninjas>python manage\par
+.py makemigrations\par
+Migrations for 'dojoninjas':\par
+  apps\\dojoninjas\\migrations\\0004_dojos_desc.py\par
+    - Add field desc to dojos\par
+\par
+(djangoenv) C:\\Users\\kkps\\Desktop\\CDojo\\pyStack\\Django\\dojo_ninjas>python manage\par
+.py migrate\par
+Operations to perform:\par
+  Apply all migrations: admin, auth, contenttypes, dojoninjas, dojonninjas, sess\par
+ions\par
+Running migrations:\par
+  Applying dojoninjas.0004_dojos_desc... OK\par
+\par
+(djangoenv) C:\\Users\\kkps\\Desktop\\CDojo\\pyStack\\Django\\dojo_ninjas>python manage\par
+.py shell\par
+Python 2.7.9 |CUSTOM| (default, Jul  1 2015, 03:41:50) [MSC v.1500 64 bit (AMD64\par
+)] on win32\par
+Type "help", "copyright", "credits" or "license" for more information.\par
+(InteractiveConsole)\par
+>>>\par
+}
+ 
