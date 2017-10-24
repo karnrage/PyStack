@@ -8,6 +8,7 @@ from django.contrib import admin
 from . import views           # This line is new!
 
 urlpatterns = [
+    #name of <form acton= xxx> goes in first place. ( after r'^ ). 
     url(r'^$', views.index, name = 'index'),
     url(r'^create$', views.create, name = "create"), #in views need to have a route with the same name
     url(r'^success$', views.success, name = 'success'), # routing, now routing to success definition. make a new success def on views page

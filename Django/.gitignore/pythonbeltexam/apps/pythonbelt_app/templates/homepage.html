@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Friends App</title>
+</head>
+<body>
+    <div>
+        <h1>Hello, {{ current_user.firstname}}</h1> <a href="{% url 'pythonbelt_app:logout' %}">Logout</a>
+    </div>
+    {% if friends %}
+    <h2>Here is the list of your friends</h2>
+    <div>
+        <table>
+            <tr>
+                <th>Alias</th>
+                <th>Actions</th>                                   
+            </tr>            
+            {% for friend in friends %}
+            <tr>
+                <td>{{friend.alias}}</td>                                   
+                <td> 
+                    <a action=profile method="GET" href="{% url 'pythonbelt_app:profile' friend.id %}">View Profile</a>
+                    <a action=remove method="POST" href="{% url 'pythonbelt_app:erase' friend.id %}">erase as a Friend</a>                        
+                </td>
+            </tr>
+            {% endfor %}
+    {% else %}<p> You have no friends yet! You are a hermit</p>{% endif %}            
+        </table>        
+    </div>
+    <div><h2>Other Users not on your friends list</h2>
+            <table>
+                <thead>
+                    <th>Alias</th>
+                    <th>Actions</th>                                   
+                </thead>         
+                <!-- need loop to cycle through db to list data  -->
+               {% for user in users %} 
+                <tr>
+                    <!-- below identifies data to pull from db. calls user object and pulls attribute of firstname -->
+                    <td><a href="{% url 'pythonbelt_app:profile' user.id %}">{{ user.alias }} </a></td>
+                    <td><a href="{% url 'pythonbelt_app:add' user.id %}">Add Friend</a></td>
+                    <!-- can't do this: why? <td><input type="submit" name="add" value="add as friend"></td>
+ -->
+                </tr>
+                <!-- <div class="add">
+                    <form action="add" method="POST">
+                        {% csrf_token %}
+                        
+                    </form>
+                
+                </div> -->
+                {% endfor %}
+            </table>
+
+    </div>
+        
+
+  
+
+</body>
+</html> 
+
+
+
+
+    <!-- <div class="logout">
+        <form action="logout" method="POST">
+            {% csrf_token %}
+            <input type="submit" name="logout" value="logout">
+        </form>
+       Successfully registered or logged in!!  
+    </div> -->

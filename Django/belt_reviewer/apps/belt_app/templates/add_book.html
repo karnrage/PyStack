@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add a New Book Title & a Review</title>
+
+<style>
+    resizedTextbox {width: 100px; height: 200px}
+</style>
+</head>
+<body>
+    <h1>Add a New Book Title & a Review</h1> 
+
+    <!-- Validations need to be added for book forms -->
+    
+    <div>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                   {{ message }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+    </div>
+    <div>
+    <!-- with namespace and url you don't need to type in ........have to use *brace brace percent whatever precent brace brace to use -->
+        <form action= "{% url 'belt_app:add_book' %}" method="POST"> <!--format is as shown "<insert brace>% url 'users:logout' %<insert brace>"           big url : little url n due to namespace convention-->
+            {% csrf_token %}
+            Book Title:<br>
+            <input type="text" name="book"> <!-- need? value=""-->
+            <br>
+            Author:<br>
+            <div>
+                <input type="text" name="author">
+                <br>
+
+                <!-- made dropdown dynamic from DB -->
+
+                <form method="POST">
+                    <select name="item_id">
+                    {% for entry in item %}
+                        <option value="{{ entry.id }}">{{ entry.name }}</option>
+                    {% endfor %}
+                    </select>
+                </form>
+                <!-- <select> -->
+                    <!-- <option value="volvo">Volvo</option> -->
+                    <!-- <option value="saab">Saab</option>
+                    <option value="opel">Opel</option>
+                    <option value="audi">Audi</option> -->
+                <!-- </select> -->
+            </div>
+            <!-- ############ needed to use  text box for right size-->
+            <textarea cols="30" rows="15" input type="text" class="resizedTextbox" name="review">Review:</textarea><br><br>       
+        </form>    
+    </div>
+    <!-- <form action="{% url 'logreg_app:login' %}" method="POST"> -->
+                
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Friends Info</title>
+</head>
+<body>
+    <div>
+        <h3><a href ="{% url 'pythonbelt_app:homepage' %}">Home</a></h3>
+        <h3><a href ="{% url 'pythonbelt_app:logout' %}">Logout</a></h3>
+    </div>
+<!-- whatever gets passed in context in quotes is what is called below. this case "friend" was made the string to call -->
+    <h1>{{ friend.firstname }} Profile</h1>
+
+    <div>
+        <p><strong>First Name and Alias:</strong> {{ friend.firstname }} {{ friend.alias }}</p><br>
+        <p></p><strong>Email Address:</strong> {{ friend.email }}</p><br>
+    </div>
+</body>
+</html> 

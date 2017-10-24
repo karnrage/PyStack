@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login & Registration</title>
+    <title>Belt Reviewer</title>
 </head>
 <body>
     <h1>Registration</h1> 
@@ -21,19 +21,19 @@
         </div>
     <div>
     <!-- with namespace and url you don't need to type in ........have to use *brace brace percent whatever precent brace brace to use -->
-        <form action= "{% url 'logreg_app:create' %}" method="POST"> <!--format is as shown "<insert brace>% url 'users:logout' %<insert brace>"           big url : little url n due to namespace convention-->
+    <!-- u'logreg_app' is not a registered namespace received this error. because this app is called belt_app not logreg -->
+        <form action= "{% url 'belt_app:create' %}" method="POST"> <!--format is as shown "<insert brace>% url 'users:logout' %<insert brace>"           big url : little url n due to namespace convention-->
                 {% csrf_token %}
                 First name:<br>
-            <!-- input means form -->
                 <input type="text" name="firstname" placeholder="First Name"> <!-- need? value=""-->
                 <br>
                 Last name:<br>
-                <input type="text" name="lastname" placeholder="Last Name">
+                <input type="text" name="Alias" placeholder="Alias">
                 <br>
                 Email:<br>
                 <input type="email" name="emailreg" placeholder="Email">
                 <br>
-                Password:<br>
+                Password (Should be at least 8 characters):<br>
                 <input type="password" name="password" placeholder="Password">
                 <br>
                 Password Confirm:<br>
@@ -54,7 +54,7 @@
             </ul>
             {% endif %}
         </div> -->
-            <form action="{% url 'logreg_app:login' %}" method="POST">
+            <form action="{% url 'belt_app:login' %}" method="POST">
                 {% csrf_token %} 
                 Email:<br>
                 <input type="email" name="emaillog" placeholder="Email">

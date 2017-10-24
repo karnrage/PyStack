@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reviewed</title>
+   
+</head>
+<body>
+    <div>
+        <h1>place book title here </h1>
+        <h3>place author of book here </h3>
+        
+        <h2>Reviews:</h2>
+            <div> 
+                Rating:
+            </div>
+
+
+    </div>
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--Below is routing url. "url" leads to the url file in the app folder, not project url. after it 
+        goes to app name then the route in small url  -->
+        <a href="{% url 'belt_app:index' %}">Add Book and Review</a>
+        <a href="{% url 'belt_app:logout' %}">Logout</a>
+        <!-- links above, started with buttons, but asking for links -->
+        <!-- <form action="add_book" method="POST">
+                {% csrf_token %}
+                <input type="submit" name="add_book" value="add_book">
+        </form>
+        <form action="logout" method="POST">
+                {% csrf_token %}
+                <input type="submit" name="logout" value="logout"> -->
+        <!-- </form> -->
+    </div>
+    <!-- ################################################################# -->
+    <div>
+        <div><h3>Your Bookshelf:</h3>
+
+            {% if reviews is !null %}
+            {% for review in reviews %}
+            <ul class="messages">
+                <p><a href='books/{{review.id}}'>{{review.book.title}}</a></p>
+                <p>rating : {{review.rating}}</p>
+                <!-- <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                    {{ message }}
+                </li> -->
+                {% endfor %}
+            </ul>
+            {% endif %}
+            
+        </div>
+        <!--#############################################################  -->
+        <div><h1>Other Books</h1>
+            <table>
+                <tr>
+                    <th>Book</th>
+                    <th>Author</th>
+                    <th>Rating</th>
+                    <th>Actions</th>                    
+                </tr>
+                {% for book in books %}
+                <tr>
+                    <td>{{user.id}}</td>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.email}}</td>                    
+                    <td>Actions 
+                        <a href="/book/{{ book.id }}">Add to shelf</a>
+                        <a href="/book/{{ book.id }}/review">Review</a>                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            <!-- <div class="scroll">
+                
+            </div> -->
+        </div>
+    </div>
+
+</body>
+</html>
