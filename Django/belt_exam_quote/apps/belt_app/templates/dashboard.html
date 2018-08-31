@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/logout">Logout</a>
+    <h1> Success ! Welcome, {{ user.first_name }}</h1>
+    <form action="/dashboard" method="post">
+    {% csrf_token %}
+    <h2>Quoteable Quotes</h2>
+    {% if quotes%}
+    {% for quote in quotes%}
+    <div class="quotes">
+    {{quote.author}}: {{quote.message}}
+    <br>
+    <p>Posted By: <a href="/user_info/{{quote.user.id}}">{{quote.user.name}}</a></p>
+    <button><a href="/favorites/{{quote.id}}">Add to My list</a></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <h2> Your Favorites</h2>
+    {%if favorites%}
+    {% for favorite in favorites %}
+    {{favorite.quote.author}}  {{favorite.quote.message}}
+    <br>
+    <p> Posted BY :<a href="/user_info/{{favorite.quote.user.id}}">{{favorite.quote.user.name}}</a></p>
+    <button><a href="/remove/{{favorite.quote.id}}">Remove from list </a></button>
+    {% endfor %}
+    {% endif %}
+    </form>
+    <h2>Contribue a Quote:</h2>
+    {% if messages %}
+    {% for message in messages %}
+    {% endfor %}
+    {% endif %}     
+    <form action="/add_quote" method="post">
+        {% csrf_token %}
+      
+        QUoted BY : <input type="text">
+        <br>
+        Message: <textarea name="message" id="" cols="30" rows="10"></textarea>
+        <br>
+        <input type="submit" name="submit" value="Submit">
+   
+    </form>
+   
+</body>
+</html>

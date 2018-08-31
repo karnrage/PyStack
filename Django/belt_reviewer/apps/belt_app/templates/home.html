@@ -16,10 +16,10 @@
 </head>
 <body>
     <div>
-        <h1>Welcome {{ users.fullname}} </h1>
+        <h1>Welcome {{current_user.firstname}} </h1>
         <!--Below is routing url. "url" leads to the url file in the app folder, not project url. after it 
         goes to app name then the route in small url  -->
-        <a href="{% url 'belt_app:index' %}">Add Book and Review</a>
+        <a href="{% url 'belt_app:add_book' %}">Add Book and Review</a>
         <a href="{% url 'belt_app:logout' %}">Logout</a>
         <!-- links above, started with buttons, but asking for links -->
         <!-- <form action="add_book" method="POST">
@@ -35,11 +35,14 @@
     <div>
         <div><h3>Your Bookshelf:</h3>
 
-            {% if reviews is !null %}
-            {% for review in reviews %}
+            {% if reviews %}
             <ul class="messages">
-                <p><a href='books/{{review.id}}'>{{review.book.title}}</a></p>
-                <p>rating : {{review.rating}}</p>
+            {% for each in commentedbooks %}
+            <!-- passing normal URL from routes, passing variable to show book -->
+                <p><a href='reviewed/{{each.id}}'>{{each.title}}</a></p>
+                {% for rating in personal %}
+                <p>rating : {{each.personal}}</p>
+                {% endfor %}
                 <!-- <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
                     {{ message }}
                 </li> -->
@@ -59,13 +62,20 @@
                 </tr>
                 {% for book in books %}
                 <tr>
-                    <td>{{user.id}}</td>
-                    <td>{{user.first_name}}</td>
-                    <td>{{user.last_name}}</td>
-                    <td>{{user.email}}</td>                    
-                    <td>Actions 
-                        <a href="/book/{{ book.id }}">Add to shelf</a>
-                        <a href="/book/{{ book.id }}/review">Review</a>                        
+                    <td>{{book.title}}</td>
+                    <td>{{book.author}}</td>
+                    {% for rating in nonrated %}
+                    <td>{{nonrated.rating}}</td>
+                    {% endfor %}
+                                        
+                    <td>{% for each in nonrated %}
+                        {% if user in nonrated.commentedby.all %}
+                        <a href="/add_book/{{ nonrated.id }}">Add to shelf</a>                        
+                        <a href="/make_review/{{ nonrated.id }}">Review</a>
+                        {% else %}
+                        <a href="/make_review/{{ nonrated.id }}">Review</a>
+                        {% endif %} 
+                        {% endfor %}                       
                     </td>
                 </tr>
                 {% endfor %}

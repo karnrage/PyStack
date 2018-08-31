@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add to Wishes</title>
+</head>
+<body>
+    <div>
+        <h1>Create a New Wish List Item</h1>
+        <a href= "{% url 'wishlist_app:logout' %}">Logout</a>
+        <a href= "{% url 'wishlist_app:homepage' %}">Home</a>
+    </div>
+    <div>
+        <form action= "{% url 'wishlist_app:new_wish' %}" method="POST"> <!--format is as shown "<insert brace>% url 'users:logout' %<insert brace>"           big url : little url n due to namespace convention-->
+                {% csrf_token %}
+                Item/Product:<br>                
+                <input type="text" name="item_name"> 
+                <br>
+                <input type="submit" value="add">
+        </form> 
+    </div>
+</body>
+</html>

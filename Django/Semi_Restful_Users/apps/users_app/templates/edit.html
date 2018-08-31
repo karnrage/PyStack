@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit User</title>
+</head>
+<body>
+        {% if messages %}
+            {% for message in messages %}
+            <p {% if messages.tags %} {% endif %}> {{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    <div class="edit_profile">
+        <h1>Edit Your Profile</h1>
+        <h1>Users {{ users.id }}</h1>
+        <form action="update" method="post">
+            {% csrf_token %}
+            <strong>First Name:</strong>
+            <input type="text" name="first_name" value="{{ user.first_name }}"><br>
+            <strong>Last Name:</strong>
+            <input type="text" name="last_name" value="{{ user.last_name }}"><br>
+            <strong>Email:</strong>
+            <input type="email" name="email" value="{{ user.email }}">
+            <br>
+            <input type="submit" name="submit" value="Update">
+        </form>
+        <button><a href="/user/{{ user.id }}">Show</a></button><br>
+        <button><a href="/">Go Back</a></button>
+    </div>
+</body>
+</html>

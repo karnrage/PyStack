@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href='{% url 'wishlist:index' %}'><button>Home</button></a>
+    
+    <form action='{% url 'wishlist:clear' %}'>
+        {% csrf_token %}
+        <button>Logout</button>
+    </form>
+
+    <h1>Item: {{Item.product}}</h1><br>
+    <p>Users who added this product/item under their list:</p>
+     {% for Item in this_item %}
+    {{Item.first_name}}<br>
+     {% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello, {{ user.first_name}}!</h1>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %} {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+    <a href ='{% url 'wishlist:addingitem_page' %}'><button>Add New Item</button></a>
+    <form action='{% url 'wishlist:clear' %}'>
+        {% csrf_token %}
+    <button>Logout</button>
+    </form>
+
+    <table>
+    {% for Item in my_wishlist %}
+            
+        <tr>
+            <th>Item</th>
+            <th>Added By</th>
+            <th>Date Added</th>
+            <th colspan="2">Action</th>
+        </tr>
+        <tr>
+            <td>
+                <a href="wishlist/{{ Item.id }}">{{ Item.product }}</a> {{Item.uploader.first_name}}  {{ Item.created_at }}
+                {% if Item == Item %} 
+                <!-- filter -->
+                    <a href="wishlist/{{Item.id}}/destroy">Delete</a>
+                {% else %}
+                    <a href="wishlist/{{Item.id}}/destroy">Remove From My Wishlist</a>
+                {% endif %}
+                <!-- Insert data here -->
+                <!-- <a href="friends/{{ User.id }}">View Profile</a> -->
+                <!-- <a href="friends/{{User.id}}/destroy">Remove</a> -->
+            </td>
+        </tr>
+         {% endfor %}
+    </table>
+
+        <!-- Table data that is not on your wishlist -->
+    <p>Other Users' wishlist:</p>
+    <table>
+         {% for Item in Other_listing %}
+        <!-- <tr> -->
+            <th>Item</th>
+            <th>Added by</th>
+            <th>Date Added</th>
+            <th colspan="2">Action</th>
+        </tr>
+        <tr>
+            <td>
+            <a href="wishlist/{{ Item.id }}">{{ Item.product }}</a> {{Item.uploader.first_name}} {{ Item.created_at }}
+            <a href="adding/{{Item.id}}" name="adding">Add To My Wishlist</a>
+            </td>
+        </tr>
+         {% endfor %}
+
+         
+    </table>
+
+    
+
+</body>
+</html>

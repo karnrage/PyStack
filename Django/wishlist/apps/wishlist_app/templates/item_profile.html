@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Item Profile</title>
+</head>
+<body>
+    <div>
+        <h1><td>{{item.name}}</td></h1>
+        <a href= "{% url 'wishlist_app:logout' %}">Logout</a>
+        <a href= "{% url 'wishlist_app:homepage' %}">Home</a>
+    </div>
+    <div>
+        <h2> Users who added this product/item under their wish list:</h2>
+
+        <div>
+            
+            <ul>
+                {% for item in this_item %}
+                <li >
+                        {{item.name}}
+                    <!-- {{ message.user }} -->
+                </li>
+                {% endfor %}
+            </ul>
+            
+        </div>
+        
+
+    </div>
+</body>
+</html>U

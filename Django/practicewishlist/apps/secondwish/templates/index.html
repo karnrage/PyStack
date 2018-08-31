@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gifts wanted list</title>
+</head>
+<body>
+    <h1> Welcome! </h1>
+    <h2>Registration</h2> 
+
+    <!-- Warning messages if login/reg fails -->
+    <div>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    <!--  -->
+    
+    <div>        
+        <form action= "{% url 'practicewishlist:register' %}" method="POST"> <!--format is as shown "<insert brace>% url 'users:logout' %<insert brace>"           big url : little url n due to namespace convention-->
+            {% csrf_token %}
+            name:<br>
+            <!-- input means form -->
+            <input type="text" name="name" > <!-- need? value=""-->
+            <br>
+            Username:<br>
+            <input type="text" name="alias" >
+            <br>
+            email:<br>
+            <input type="email" name="emailreg">
+            <br>             
+            Password:<br>
+            <input type="password" name="password" >
+            <br>
+            <p>Password should be at least 8 characters</p>
+            Password Confirm:<br>
+            <input type="password" name="confirm" placeholder="Pass Confirm"><br>
+            Date Hire:<br>
+            <input type="date" name="bday" placeholder=" mm/dd/yyyy">
+            <input type="submit" value="Register">
+        </form>    
+    </div>
+    <h2>Login<h2>
+    <div>       
+        <form action="{% url 'practicewishlist:login' %}" method="POST">
+            {% csrf_token %} 
+
+            <!-- Select one to comment out, either email or username -->
+            <!-- email:<br>
+            <input type="email" name="emaillog" placeholder="email">
+            <br> -->
+            username:<br>
+            <input type="text" name="alias">
+            <br>
+            Password:<br>
+            <input type="password" name="password">
+            <br>            
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+</body>
+</html>

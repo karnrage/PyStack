@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wishlist</title>
+</head>
+<body>
+        <h1>Success, Welcome {{ users.firstname}}</h1>
+        <div class="logout">
+            <form action="logout" method="POST">
+                {% csrf_token %}
+                <input type="submit" name="logout" value="logout">
+            </form>
+           Successfully registered or logged in!!  
+        </div>
+        <!-- what is the regular way to do below -->
+        <div>
+            {% if items %}
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Added by</th>
+                    <th>Date added</th>
+                    <th>Action</th>
+                </tr>
+                {% for Item in items %}            
+                <tr>
+                    <td><a href="{% url 'wishlist_app:item_profile_page' Item.id %}">{{Item.name}}</a></td>
+                    <!-- item.created_by only returns whole object. need to whittle down further -->
+                    <td>{{Item.created_by.name}}</td>
+                    <td>{{Item.createdat}}</td>                                   
+                    
+                    <td>{% if items %}
+                        <a href="{% url 'wishlist_app:remove' Item.id %}" >remove from wishlist</a>
+                        {% else %}
+                        <!-- <p> <a href=>erase from database</a></p>                         -->
+                    </td>{% endif %}
+                </tr>
+                {% endfor %}
+                {% else %}<p> You have no wishlist items!</p>
+            {% endif %}            
+            </table>   
+
+        </div>
+        <div>
+            {% if otherwishlist %}
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Added by</th>
+                    <th>Date added</th>
+                    <th>Action</th>
+                </tr>
+                {% for others in otherwishlist %}            
+                <tr>
+                    <td><a href="{% url 'wishlist_app:item_profile_page' others.id %}">{{others.name}}</a></td>
+                    <!-- item.created_by only returns whole object. need to whittle down further -->
+                    <td>{{others.created_by.name}}</td>
+                    <td>{{others.createdat}}</td>                                   
+                    
+                    <td>{% if others %}
+                        <a href="{% url 'wishlist_app:add_to_list' others.id %}" >add to wishlist</a>
+                        {% else %}
+                        <!-- <p> <a href=>erase from database</a></p>                         -->
+                    </td>{% endif %}
+                </tr>
+                {% endfor %}
+                {% else %}
+            {% endif %}            
+            </table>   
+
+        </div>    
+        <a href= "{% url 'wishlist_app:add_wish_page' %}">Add merchandise</a>
+</body>
+</html>

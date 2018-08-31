@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pokes</title>
+</head>
+<body>
+        <h1>Success, Welcome {{user.name}}</h1>
+        <p>{{poke_count.count}} people poked you!</p>
+        
+        <div class="logout">
+            <form action="logout" method="POST">
+                {% csrf_token %}
+                <input type="submit" name="logout" value="logout">
+            </form>
+           Successfully registered or logged in!!  
+        </div>
+
+<!-- top notifcation ppl who poked you -->
+        <div>
+            {% for message in poked_you_list %}
+            <p>{{message.poked_you_list.name}} poked you {{message.poke_count}} times</p>
+            {% endfor %}
+        </div>
+
+        <div>
+            <!-- % if you_poked % -->
+            <ul class="messages">
+                {% for message in you_poked %}
+                <li>
+                <!-- <li{% if message.tags %} class="{{ message.tags }}"{% endif %}> -->
+                    {{ message }}
+                </li>
+                {% endfor %}
+            </ul>
+            <!-- % endif % -->
+        </div>
+<!-- lower box people who you can poke -->
+        <div>
+            <h2>People you may want to Poke!</h2>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Alias</th>
+                    <th>Email Address</th>
+                    <th>Poke History</th>
+                </tr>
+                
+                {% for others in other_users %}            
+                <tr>
+                    <td>{{others.name}}</a></td>                    
+                    <td>{{others.alias}}</td>
+                    <td>{{others.email}}</td>
+                    <td>{{others.email}}</td>                                    
+                    
+                    <td>
+                        <!-- <a href="{ url 'wishlist_app:add_to_list' others.id }" >add to wishlist</a> -->
+                        <form action="{% url 'python_retake:poke' user.id %}" method="POST" >
+                            {% csrf_token %}
+                            <input type="submit" name="poke" value="Poke" >
+                        </form>
+                        
+                                               
+                    </td>
+                </tr>
+                {% endfor %}
+                
+                      
+            </table>   
+
+        </div>
+        <!-- <a href= "{% url 'python_retake:poke' %}">Poke</a> -->
+
+        <!-- <form action= "{% url 'python_retake:poke' %}" method="POST"> 
+            {% csrf_token %}           
+            <input type="submit" value="Poke">
+        </form> -->
+</body>
+</html>

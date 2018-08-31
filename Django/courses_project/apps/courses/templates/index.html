@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Courses</title>
+</head>
+<body>
+    <h1>Add a New Course</h1>
+    <div>
+        <form action= "{% url 'courses:create' %}" method="POST"> <!--format is as shown "<insert brace>% url 'users:logout' %<insert brace>"           big url : little url n due to namespace convention-->
+            {% csrf_token %}
+            name:<br>
+            <!-- input means form -->
+            <input type="text" name="course" placeholder="name"> <!-- need? value=""-->
+            <br>
+            description:<br>
+            <textarea rows="10" cols="50" type="text" name="description" placeholder="description">
+             
+            </textarea><br>
+            <input type="submit" value="Add">
+        </form> 
+    </div>
+    <h1>Courses</h1>
+    <div>
+        {% if course %}
+        <table>
+            <tr>
+                <th>Course Name</th>
+                <th>Description</th>
+                <th>Date added</th>
+                <th>Action</th>
+            </tr>
+            {% for i in course %}   
+            <tr>
+                <td>{{i.name}}</td>                
+                <td>{{i.course_descrip.desc}}</td>
+                <td>{{i.createdat}}</td>                                   
+                
+                <td><a href="{% url 'courses:delete_course' i.id %}">Remove</a>
+                <a href=></a>
+            {% endfor %}
+        {% endif %}
+        
+                    
+                    
+                </td>
+            </tr>
+             
+        </table> 
+    </div>
+</body>
+</html>

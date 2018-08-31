@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <title>Document</title>
+
+</head>
+<body>
+    <form id="register" action="{% url 'users:register' %}" method="post"> 
+        {% csrf_token %}
+        <h2>Registration!</h2>
+        <p>Name:<p>
+        <input type="text" name="name">
+        <p>USERNAME</p>
+        <input type="text" name="username">
+        <p>PASSWORD</p>
+        <input type="password" name="pw">
+        <p>CONFIRM PASSWORD</p>
+        <input type="password" name="pw_confirm">
+        
+        <p><button type="submit">Register</button></p>
+    </form>
+    <form id="login" action="{% url 'users:login' %}" method="post"> 
+        {% csrf_token %}
+        <h2>Login</h2>
+        <p>USERNAME</p>
+        <input type="text" name="username">
+        <p>PASSWORD</p>
+        <input type="password" name="pw">
+        <button type="submit">Login</button>
+    </form>
+    {% if messages %}
+        {% for message in messages %}
+            <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

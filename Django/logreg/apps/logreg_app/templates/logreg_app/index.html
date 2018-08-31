@@ -24,7 +24,6 @@
         <form action= "{% url 'logreg_app:create' %}" method="POST"> <!--format is as shown "<insert brace>% url 'users:logout' %<insert brace>"           big url : little url n due to namespace convention-->
                 {% csrf_token %}
                 First name:<br>
-            <!-- input means form -->
                 <input type="text" name="firstname" placeholder="First Name"> <!-- need? value=""-->
                 <br>
                 Last name:<br>

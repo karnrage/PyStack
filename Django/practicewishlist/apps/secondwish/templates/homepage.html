@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>material things</title>
+</head>
+<body>
+        <h1>Success, Welcome {{user.name}}</h1>
+
+
+        
+        
+        <div class="logout">
+            <form action="logout" method="POST">
+                {% csrf_token %}
+                <input type="submit" name="logout" value="logout">
+            </form>
+           Successfully registered or logged in!!  
+        </div>
+
+<!-- lower box people who you can poke -->
+        <div>
+            <h2>Your wish list!</h2>
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Added by</th>
+                    <th>date added</th>
+                    <th>action</th>
+                </tr>
+                
+                {% for wish in wishlist %}            
+                <tr>
+                    <td>{{wishlist.name}}</a></td>                    
+                    <td>{{wishlist.added_by}}</td>
+                    <td>{{wishlist.createdat}}</td>
+                    >                                    
+                    
+                    <td>
+                        <!-- <a href="{ url 'wishlist_app:add_to_list' others.id }" >add to wishlist</a> -->
+                        <form action="% url 'python_retake:poke' user.id %" method="POST" >
+                            {% csrf_token %}
+                            <input type="submit" name="poke" value="Poke" >
+                        </form>
+                        
+                                               
+                    </td>
+                </tr>
+                {% endfor %}
+                
+                      
+            </table>   
+
+        </div>
+        <a href= "{% url 'practicewishlist:add_wish_link' %}">add wish</a>
+
+</body>
+</html>
+
+
+         <!-- <form action= "% url 'python_retake:poke' %" method="POST"> 
+            % csrf_token %         
+            <input type="submit" value="Poke">
+        </form> -->

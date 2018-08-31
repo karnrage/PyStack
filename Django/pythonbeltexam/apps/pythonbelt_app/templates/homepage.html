@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Friends App</title>
+</head>
+<body>
+    <div>
+        <h1>Hello, {{ current_user.name}}</h1> <a href="{% url 'pythonbelt_app:logout' %}">Logout</a>
+    </div>
+    
+    <div><h2>Your wish list</h2>
+            <table>
+                <thead>
+                    <th>Item</th>
+                    <th>Added by</th>
+                    <th>Date Added </th>  
+                    <th>Action</th>                                     
+                </thead>                
+               {% for user in users %} 
+                <tr>
+                    <!-- <td><a href="{% url 'pythonbelt_app:profile' user.id %}">{{ user.username }} </a></td>
+                    <td><a href="{% url 'pythonbelt_app:add' user.id %}">Add </a></td>
+                    <td><a href="{% url 'pythonbelt_app:add' user.id %}">Add </a></td>
+                    <td><a href="{% url 'pythonbelt_app:add' user.id %}">Add </a></td> -->
+                </tr>
+           
+                {% endfor %}
+            </table>
+            <button><a href="{% url 'pythonbelt_app:add' user.id %}">Add A New Item</a></button>
+    </div>
+</body>
+</html> 

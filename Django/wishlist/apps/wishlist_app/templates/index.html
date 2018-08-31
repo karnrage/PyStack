@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wishlist</title>
+</head>
+<body>
+    <h1> Welcome! </h1>
+    <h2>Registration</h2> 
+    <div>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    
+    <div>
+        <!-- with namespace and url you don't need to type in ........have to use *brace brace percent whatever precent brace brace to use -->
+        <form action= "{% url 'wishlist_app:create' %}" method="POST"> <!--format is as shown "<insert brace>% url 'users:logout' %<insert brace>"           big url : little url n due to namespace convention-->
+            {% csrf_token %}
+            name:<br>
+            <!-- input means form -->
+            <input type="text" name="name" placeholder="name"> <!-- need? value=""-->
+            <br>
+            username:<br>
+            <input type="text" name="username" placeholder="username">
+            <br>            
+            Password:<br>
+            <input type="password" name="password" placeholder="Password">
+            <br>
+            <p>Password should be at least 8 characters</p>
+            Password Confirm:<br>
+            <input type="password" name="confirm" placeholder="Pass Confirm">
+            Date Hired:<br>
+            <input type="date" name="hired" placeholder=" mm/dd/yyyy">
+            <input type="submit" value="Register">
+        </form>    
+    </div>
+    <h2>Login<h2>
+        <div>       
+            <form action="{% url 'wishlist_app:login' %}" method="POST">
+                {% csrf_token %} 
+                username:<br>
+                <input type="text" name="username" placeholder="username">
+                <br>
+                Password:<br>
+                <input type="password" name="password" placeholder="Password">
+                <br>
+                
+                <input type="submit" value="Login">
+            </form>
+        </div>
+</body>
+</html>

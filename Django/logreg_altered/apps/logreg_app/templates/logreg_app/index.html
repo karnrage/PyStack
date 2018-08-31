@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wishlist</title>
+</head>
+<body>
+    <h1>Registration</h1> 
+    <div>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                   {{ message }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    <div>
+    <!-- with namespace and url you don't need to type in ........have to use *brace brace percent whatever precent brace brace to use -->
+        <form action= "{% url 'logreg_app:create' %}" method="POST"> <!--format is as shown "<insert brace>% url 'users:logout' %<insert brace>"           big url : little url n due to namespace convention-->
+                {% csrf_token %}
+                Name:<br>
+            <!-- input means form -->
+                <input type="text" name="name" placeholder="Name"> <!-- need? value=""-->
+                <br>
+                Username:<br>
+                <input type="text" name="username" placeholder="username">
+                <br>
+                <!-- Email:<br>
+                <input type="email" name="emailreg" placeholder="Email">
+                <br> -->
+                Password:<br>
+                <input type="password" name="password" placeholder="Password">
+                <br>
+                Password Confirm:<br>
+                <input type="password" name="confirm" placeholder="Pass Confirm">
+                <br>
+                day hired:<br>
+                <input type="date" name="bday" placeholder=" mm/dd/yyyy">
+                <input type="submit" value="Register">
+        </form>    
+    </div>
+    <h1>Login<h2>
+        <!-- <div>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                   {{ message }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div> -->
+            <form action="{% url 'logreg_app:login' %}" method="POST">
+                {% csrf_token %} 
+                Username:<br>
+                <input type="text" name="emaillog" placeholder="username">
+                <br>
+                Password:<br>
+                <input type="password" name="password" placeholder="Password">
+                <br>
+                
+                <input type="submit" value="Login">
+            </form> 
+
+</body>
+</html>

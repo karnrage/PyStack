@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class= "header">
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+    <form action="register" method="post">
+            {% csrf_token%}
+        <h1>Registration</h1>
+        <label >First Name : <input type="text" name="first_name" ></label><br />
+        <label > Last Name : <input type="text" name="last_name" ></label><br />
+        <label >Birthday : <input type="date" name="birthday"></label><br />
+        <label > Email : <input type="text" name="email" ></label><br />
+        <label > Password : <input type="password" name="password" ></label><br />
+        <label > Confirm PW : <input type="password" name="confirm_password" ></label><br />
+        <input type="submit" value="register" >
+        </form>
+        <h1> Login</h1>
+        <form action="login"  method="POST">
+                {% csrf_token%}
+        <label >Email : <input type="email" name="email" ></label><br />
+        <label >Password : <input type="password" name="password" ></label><br />
+        <input type="submit" value="login" >
+    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>material things</title>
+</head>
+<body>
+        <h1>Success, Welcome {{user.name}}</h1>
+
+
+        
+
+        <div>
+                {% if messages %}
+                <ul> 
+                    {% for message in messages %}                
+                       <li> {{ message }} </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+        </div>
+        
+        
+        <div class="logout">
+            <form action="logout" method="POST">
+                {% csrf_token %}
+                <input type="submit" name="logout" value="logout">
+            </form>
+        </div>
+
+
+    <div><h2>Your travel plans</h2>
+        <table>
+                <tr>
+                    <th>Destination</th>
+                    <th>Travel Start Date</th>
+                    <th>Travel End Date</th>
+                    <th>Plan</th>
+                </tr>
+                {% if your_trips %}
+                {% for trip in your_trips %}            
+                <tr>
+                    <td><a href="{% url 'sunday_test_project:trip_profile' trip.id %}">{{trip.location}}</a></td>
+                    <!-- <td>{{trip.location}}</td> -->
+                    <td>{{trip.date_from}}</td>
+                    <td>{{trip.date_to}}</td>
+                    <td>{{trip.description}}</td>                                                 
+                    
+                    </tr>
+                {% endfor %}
+                {% else %}<p> You have no travel plans</p>
+            {% endif %}            
+        </table>   
+
+    </div>
+
+    <div><h2>Other users travel plans</h2>
+        <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Destination</th>
+                    <th>Travel Start Date</th>
+                    <th>Travel End Date</th>
+                    <th>Do you Want to Join?</th>
+                </tr>
+                {% if other_trips %}
+                {% for trip in other_trips %}            
+                <tr>
+                    <td>{{trip.user.name}}</td>
+                    <td><a href="{% url 'sunday_test_project:trip_profile' trip.id %}">{{trip.location}}</a></td>
+                    <!-- <td>{{trip.location}}</td> -->
+                    <td>{{trip.date_from}}</td>
+                    <td>{{trip.date_to}}</td>
+                    <td><a href="{% url 'sunday_test_project:join_trip' trip.id %}">Join?</a></td>                                                 
+                    
+                    </tr>
+                {% endfor %}
+                {% else %}<p> You have no travel plans</p>
+            {% endif %}            
+        </table>
+    </div>
+    
+    <a href="{% url 'sunday_test_project:create' %}">add new trip</a>
+</body>
+</html>

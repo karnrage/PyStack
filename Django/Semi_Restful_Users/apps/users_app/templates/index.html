@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Semi-Restful Users</title>
+    <style>
+        .user_form th{
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="user_form">
+        <h1>Users</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Created At</th> 
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.created_at}}</td>
+                <td>Actions 
+                    <a href="/user/{{ user.id }}">Show</a>
+                    <a href="/user/{{ user.id }}/edit">Edit</a>
+                    <a href="/user/{{ user.id }}">delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button><a href="new">Add A New User</a></button>
+        <div>
+    </div>
+
+</body>
+</html>

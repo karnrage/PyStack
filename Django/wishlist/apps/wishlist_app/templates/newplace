@@ -1,0 +1,3 @@
+"{% url 'wishlist_app:item_profile' user.id %}"
+"{% url 'wishlist_app:erase' user.id %}"
+"{% url 'wishlist_app:erase' user.id %}"

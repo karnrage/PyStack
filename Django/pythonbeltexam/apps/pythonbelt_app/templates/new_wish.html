@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New Wish</title>
+</head>
+<body>
+    <div>
+        <h1>Create a New Wish List item</h1> <a href="{% url 'pythonbelt_app:logout' %}">Logout</a>
+    </div>
+    
+    <div><h2>Item/Product</h2>
+        <form action= "{% url 'pythonbelt_app:add' user.id %}" method="POST"> 
+            {% csrf_token %}
+            Item Product:<br>
+            <input type="text" name="newwish"> 
+            <br>
+            <input type="submit" value="newwish">
+        </form> 
+    </div>
+
+</body>
+</html> 
